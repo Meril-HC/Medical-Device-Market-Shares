@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- The title tag gets updated dynamically -->
+  <title id="page-title">Medical Devices - Highlights</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f8f9fa;
+  }
+  h1 {
+    font-size: 32px;
+    color: #003366;
+  }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes content to the edges */
+    margin-bottom: 20px;
+    position: relative; /* Ensures correct positioning */
+  }
+  .meril-logo {
+    height: 80px; /* Adjust size if needed */
+    position: absolute;
+    right: 0; /* Moves the logo to the far right */
+    top: 0; /* Aligns it at the top */
+    margin: 10px; /* Adds spacing to avoid sticking to edges */
+  }
+  .badge {
+    background-color: #0073e6;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  /* Tabs styling */
+  .tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #ccc;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
+  .tabs div {
+    font-weight: bold;
+    color: #003366;
+    cursor: pointer;
+  }
+  .tabs .active {
+    border-bottom: 3px solid #0073e6;
+    padding-bottom: 5px;
+  }
+  /* Section styling */
+  .section {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .section h2 {
+    color: #003366;
+  }
+  /* Dropdown container styling */
+  .dropdown-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  .dropdown label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #495057;
+  }
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    min-width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  select:focus {
+    outline: 2px solid #0073e6;
+  }
+  /* Graph and Conclusion Styles */
+  /* Single Graph Container (centered) */
+  #chartdiv {
+    width: 50%;
+    height: 500px;
+    box-sizing: border-box;
+    margin: 0 auto 10px auto;
+  }
+  /* Comparison Graph Containers */
+  #chartdiv1, #chartdiv2 {
+    width: 48%;
+    height: 500px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  #chartdiv1, #chartdiv2 {
+    display: inline-block;
+    vertical-align: top;
+  }
+  #chartdiv2 {
+    margin-right: 0;
+  }
+  .conclusion {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+    min-height: 40px; /* Reserve space for the text */
+  }
+  /* Loader Styling */
+  .loader {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #0073e6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1000; /* Ensures it appears above all content */
+  }
+  /* Spinning animation */
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  /* Highlights List Styling */
+  #highlightsList li {
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <div class="header-text">
+      <h1 id="main-title">Medical Devices - Highlights</h1>
+      <span class="badge" id="regionBadge">Worldwide</span>
+    </div>
+    <img src="https://www.merillife.com/assets/images/home/new/meril_logo_new.png" alt="Meril Logo" class="meril-logo">
+  </div>
+  <div class="tabs">
+    <div class="active">HIGHLIGHTS</div>
+    <div>MARKET DEFINITION</div>
+    <div>KEY PLAYERS</div>
+  </div>
+
+  <!-- Highlights Section (always at the top) -->
+  <div class="section" id="highlights">
+    <h2>Highlights</h2>
+    <ul id="highlightsList">
+      <!-- Dynamic highlight points will be injected here -->
+    </ul>
+  </div>
+
+  <!-- Dropdown Filters -->
+  <div class="dropdown-container">
+    <!-- Market Dropdown -->
+    <div class="dropdown">
+      <label for="market">Market</label>
+      <select id="market">
+        <option value="IVD">IVD</option>
+        <option value="Spine Implant">Spine Implant</option>
+      </select>
+    </div>
+
+    <!-- Region Dropdown -->
+    <div class="dropdown">
+      <label for="region">Region</label>
+      <select id="region">
+        <option value="Worldwide">Worldwide</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+        <option value="Africa">Africa</option>
+        <option value="Australia">Australia</option>
+      </select>
+    </div>
+
+    <!-- Region Comparison Dropdown -->
+    <div class="dropdown">
+      <label for="region-compare">Region Comparison</label>
+      <select id="region-compare">
+        <option value="">Select Region to Compare</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+        <option value="Africa">Africa</option>
+        <option value="Australia">Australia</option> 
+      </select>
+    </div>
+
+    <!-- View By Dropdown -->
+    <div class="dropdown">
+      <label for="viewBy">View By</label>
+      <select id="viewBy">
+        <option value="default">Default</option>
+        <option value="market">By Market Share</option>
+        <option value="cagr">By CAGR</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Loader (Loading Animation) -->
+  <div id="loading" class="loader"></div>
+
+  <!-- Single Chart Mode Containers -->
+  <div id="chartdiv"></div>
+  <div id="conclusiondiv" class="conclusion"></div>
+
+  <!-- Comparison Mode Containers -->
+  <div id="chartdiv1" style="display: none;"></div>
+  <div id="chartdiv2" style="display: none;"></div>
+  <div id="conclusionCombined" class="conclusion" style="display: none;"></div>
+
+
+  <!-- First, add the Spine Implant data arrays -->
+  <script>
+    var SpineImplant_All_Regions = [
+      { country: "North America",        marketValue: 6.71, cagr: 4.20, flag: "" },
+      { country: "South America",        marketValue: 1.28,  cagr: 4.57, flag: "" },
+      { country: "Australia & Oceania",  marketValue: 0.39,  cagr: 3.69, flag: "" },
+      { country: "Asia",                 marketValue: 2.67,  cagr: 7.20, flag: "" },
+      { country: "Africa",               marketValue: 0.30,  cagr: 2.82, flag: "" },
+      { country: "Europe",               marketValue: 3.52,  cagr: 5.73, flag: "" }
+    ];
+
+    var SpineImplant_Asia = [
+      { country: "South Korea",  marketValue: 0.29,  cagr: 6.7,  flag: "https://flagcdn.com/w20/kr.png" },
+      { country: "China",        marketValue: 0.91,  cagr: 6.4,  flag: "https://flagcdn.com/w20/cn.png" },
+      { country: "India",        marketValue: 0.3,   cagr: 8.5,  flag: "https://flagcdn.com/w20/in.png" },
+      { country: "Vietnam",      marketValue: 0.04,  cagr: 7.2,  flag: "https://flagcdn.com/w20/vn.png" },
+      { country: "UAE",          marketValue: 0.21,  cagr: 4.83, flag: "https://flagcdn.com/w20/ae.png" },
+      { country: "Saudi Arabia", marketValue: 0.33,  cagr: 6.0,  flag: "https://flagcdn.com/w20/sa.png" }
+    ];
+
+    var SpineImplant_Europe = [
+      { country: "UK", marketValue: 0.58, cagr: 5.3, flag: "https://flagcdn.com/w20/gb.png" }
+    ];
+
+    var SpineImplant_SouthAmerica = [
+      { country: "Brazil",   marketValue: 0.025, cagr: 4.5, flag: "https://flagcdn.com/w20/br.png" },
+      { country: "Colombia", marketValue: 0.12,  cagr: 6.2, flag: "https://flagcdn.com/w20/co.png" }
+    ];
+
+    var SpineImplant_NorthAmerica = [
+      { country: "USA", marketValue: 6.59, cagr: 1.5, flag: "https://flagcdn.com/w20/us.png" }
+    ];
+
+    var SpineImplant_Africa = [
+      { country: "South Africa", marketValue: 0.008, cagr: 6.1, flag: "https://flagcdn.com/w20/za.png" },
+      { country: "Egypt",        marketValue: 0.04,  cagr: 6.7, flag: "https://flagcdn.com/w20/eg.png" }
+    ];
+  </script>
+
+  <!-- amCharts and Graph Code -->
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script>
+    // Update the Comparison Dropdown to exclude the currently selected Region.
+    function updateComparisonDropdown() {
+      let regionSelect = document.getElementById("region");
+      let selectedRegion = regionSelect.value;
+      let comparisonSelect = document.getElementById("region-compare");
+      // All possible regions for comparison (excluding "Worldwide")
+      let regions = ["Asia", "Europe", "North America", "South America", "Africa", "Australia"];
+      // Clear existing options
+      comparisonSelect.innerHTML = "";
+      // Add default option with empty value
+      let defaultOption = document.createElement("option");
+      defaultOption.text = "Select Region to Compare";
+      defaultOption.value = "";
+      comparisonSelect.appendChild(defaultOption);
+      // Add remaining regions except the selected one
+      regions.forEach(region => {
+        if (region !== selectedRegion) {
+          let option = document.createElement("option");
+          option.text = region;
+          option.value = region;
+          comparisonSelect.appendChild(option);
+        }
+      });
+    }
+  </script>
+  <script>
+    am5.ready(function() {
+
+      /***********************
+       * Data & Flag Mappings
+       ***********************/
+      
+      var flags = {
+        "USA": "https://flagcdn.com/w20/us.png",
+        "China": "https://flagcdn.com/w20/cn.png",
+        "Japan": "https://flagcdn.com/w20/jp.png",
+        "Germany": "https://flagcdn.com/w20/de.png",
+        "UK": "https://flagcdn.com/w20/gb.png",
+        "France": "https://flagcdn.com/w20/fr.png",
+        "India": "https://flagcdn.com/w20/in.png",
+        "Spain": "https://flagcdn.com/w20/es.png",
+        "Netherlands": "https://flagcdn.com/w20/nl.png",
+        "South Korea": "https://flagcdn.com/w20/kr.png",
+        "Canada": "https://flagcdn.com/w20/ca.png",
+        "Singapore": "https://flagcdn.com/w20/sg.png",
+        "Bangladesh": "https://flagcdn.com/w20/bd.png",
+        "Vietnam": "https://flagcdn.com/w20/vn.png",
+        "Malaysia": "https://flagcdn.com/w20/my.png",
+        "Indonesia": "https://flagcdn.com/w20/id.png",
+        "UAE": "https://flagcdn.com/w20/ae.png",
+        "Israel": "https://flagcdn.com/w20/il.png",
+        "Saudi Arabia": "https://flagcdn.com/w20/sa.png",
+        "Russia": "https://flagcdn.com/w20/ru.png",
+        "Italy": "https://flagcdn.com/w20/it.png",
+        "Hungary": "https://flagcdn.com/w20/hu.png",
+        "Poland": "https://flagcdn.com/w20/pl.png",
+        "Sweden": "https://flagcdn.com/w20/se.png",
+        "Turkey": "https://flagcdn.com/w20/tr.png",
+        "Brazil": "https://flagcdn.com/w20/br.png",
+        "Argentina": "https://flagcdn.com/w20/ar.png",
+        "Colombia": "https://flagcdn.com/w20/co.png",
+        "Mexico": "https://flagcdn.com/w20/mx.png",
+        "South Africa": "https://flagcdn.com/w20/za.png",
+        "Egypt": "https://flagcdn.com/w20/eg.png",
+        "Australia": "https://flagcdn.com/w20/au.png"
+      };
+
+      var productConfig = {
+        "Spine Implant": { minValue: 500, maxValue: 1500, minCagr: 5, maxCagr: 15 }
+      };
+
+      /***********************
+       * Real IVD Data
+       ***********************/
+      
+      var IVD_All_Regions = [
+        { country: "North America", marketValue: 33.53, cagr: 2.80, flag: "" },
+        { country: "South America", marketValue: 4.64, cagr: 3.67, flag: "" },
+        { country: "Australia & Oceania", marketValue: 1.36, cagr: 3.82, flag: "" },
+        { country: "Asia", marketValue: 25.5, cagr: 4.05, flag: "" },
+        { country: "Africa", marketValue: 1.72, cagr: 3.71, flag: "" },
+        { country: "Europe", marketValue: 22.4, cagr: 2.96, flag: "" }
+      ];
+
+      var IVD_Asia = [
+        { country: "Singapore", marketValue: 0.179, cagr: 5.47, flag: flags["Singapore"] },
+        { country: "India", marketValue: 1.70, cagr: 4.76, flag: flags["India"] },
+        { country: "China", marketValue: 8.620, cagr: 4.55, flag: flags["China"] },
+        { country: "Bangladesh", marketValue: 0.0537, cagr: 6.27, flag: flags["Bangladesh"] },
+        { country: "South Korea", marketValue: 3.930, cagr: 4.46, flag: flags["South Korea"] },
+        { country: "Vietnam", marketValue: 0.235, cagr: 5.43, flag: flags["Vietnam"] },
+        { country: "Malaysia", marketValue: 0.290, cagr: 4.50, flag: flags["Malaysia"] },
+        { country: "Indonesia", marketValue: 0.390, cagr: 4.78, flag: flags["Indonesia"] },
+        { country: "UAE", marketValue: 0.434, cagr: 5.73, flag: flags["UAE"] },
+        { country: "Israel", marketValue: 0.47, cagr: 4.01, flag: flags["Israel"] },
+        { country: "Saudi Arabia", marketValue: 1.04, cagr: 2.27, flag: flags["Saudi Arabia"] },
+        { country: "Russia", marketValue: 1.34, cagr: 2.17, flag: flags["Russia"] }
+      ];
+
+      var IVD_Europe = [
+        { country: "Germany", marketValue: 3.95, cagr: 3.14, flag: flags["Germany"] },
+        { country: "UK", marketValue: 1.88, cagr: 4.94, flag: flags["UK"] },
+        { country: "Italy", marketValue: 2.71, cagr: 2.14, flag: flags["Italy"] },
+        { country: "Hungary", marketValue: 0.132, cagr: 3.29, flag: flags["Hungary"] },
+        { country: "Spain", marketValue: 1.81, cagr: 2.53, flag: flags["Spain"] },
+        { country: "Poland", marketValue: 0.74, cagr: 2.91, flag: flags["Poland"] },
+        { country: "Sweden", marketValue: 0.304, cagr: 3.29, flag: flags["Sweden"] },
+        { country: "Turkey", marketValue: 0.97, cagr: 2.96, flag: flags["Turkey"] }
+      ];
+
+      var IVD_North_America = [
+        { country: "USA", marketValue: 30.3, cagr: 2.76, flag: flags["USA"] },
+        { country: "Mexico", marketValue: 1.44, cagr: 2.99, flag: flags["Mexico"] }
+      ];
+
+      var IVD_South_America = [
+        { country: "Brazil", marketValue: 1.85, cagr: 4.19, flag: flags["Brazil"] },
+        { country: "Argentina", marketValue: 1.15, cagr: 3.11, flag: flags["Argentina"] },
+        { country: "Colombia", marketValue: 0.53, cagr: 3.58, flag: flags["Colombia"] }
+      ];
+
+      var IVD_Africa = [
+        { country: "South Africa", marketValue: 0.48, cagr: 2.02, flag: flags["South Africa"] },
+        { country: "Egypt", marketValue: 0.215, cagr: 6.84, flag: flags["Egypt"] }
+      ];
+
+      var IVD_Australia = [
+        { country: "Australia", marketValue: 1.15, cagr: 3.70, flag: flags["Australia"] }
+      ];
+
+      /***********************
+       * Data Generation Function
+       ***********************/
+      
+      function getDataForRegion(region, product) {
+        if (product === "IVD") {
+          switch (region) {
+            case "Worldwide": return IVD_All_Regions;
+            case "Asia": return IVD_Asia;
+            case "Europe": return IVD_Europe;
+            case "North America": return IVD_North_America;
+            case "South America": return IVD_South_America;
+            case "Africa": return IVD_Africa;
+            case "Australia": return IVD_Australia;
+            default: return IVD_All_Regions;
+          }
+        } else if (product === "Spine Implant") {
+          switch (region) {
+            case "Worldwide": return SpineImplant_All_Regions;
+            case "Asia": return SpineImplant_Asia;
+            case "Europe": return SpineImplant_Europe;
+            case "North America": return SpineImplant_NorthAmerica;
+            case "South America": return SpineImplant_SouthAmerica;
+            case "Africa": return SpineImplant_Africa;
+            case "Australia":
+              return SpineImplant_All_Regions.filter(function(item) {
+                return item.country.indexOf("Australia") !== -1;
+              });
+            default: return SpineImplant_All_Regions;
+          }
+        } else {
+          var countries = ["USA", "China", "Japan", "Germany", "UK", "France", "India", "Spain", "Netherlands", "South Korea", "Canada"];
+          var config = productConfig[product] || { minValue: 500, maxValue: 1500, minCagr: 5, maxCagr: 15 };
+          return countries.map(function(country) {
+            var marketValue = Math.floor(Math.random() * (config.maxValue - config.minValue + 1)) + config.minValue;
+            var cagr = (Math.random() * (config.maxCagr - config.minCagr) + config.minCagr).toFixed(2);
+            return {
+              country: country,
+              marketValue: marketValue,
+              cagr: cagr,
+              flag: flags[country] || ""
+            };
+          });
+        }
+      }
+
+      /***********************
+       * Typing Effect Function
+       ***********************/
+      
+      function typeWriter(element, text, speed) {
+        element.innerHTML = "";
+        var i = 0;
+        function type() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+        type();
+      }
+
+      /***********************
+       * Conclusion Generation Functions
+       ***********************/
+      
+      // Single chart conclusion.
+      function getConclusion(data, viewBy) {
+        if (!data || data.length === 0) return "";
+        if (data.length === 1) {
+          var onlyCountry = data[0];
+          if(viewBy === "market") {
+            return "In this region, " + onlyCountry.country + " is the only available data point with a market value of $" +
+                   parseFloat(onlyCountry.marketValue).toFixed(2) + "B.";
+          } else if(viewBy === "cagr") {
+            return "In this region, " + onlyCountry.country + " is the only available data point with a CAGR of " + onlyCountry.cagr + "%.";
+          } else {
+            return "In this region, " + onlyCountry.country + " is the only available data point with a market value of $" +
+                   parseFloat(onlyCountry.marketValue).toFixed(2) + "B and a CAGR of " + onlyCountry.cagr + "%.";
+          }
+        }
+        if (viewBy === "market") {
+          var marketLeader = data[0];
+          data.forEach(function(item) {
+            if (parseFloat(item.marketValue) > parseFloat(marketLeader.marketValue)) {
+              marketLeader = item;
+            }
+          });
+          return marketLeader.country + " dominates with a market value of $" +
+                 parseFloat(marketLeader.marketValue).toFixed(2) + "B.";
+        } else if (viewBy === "cagr") {
+          var growthLeader = data[0];
+          data.forEach(function(item) {
+            if (parseFloat(item.cagr) > parseFloat(growthLeader.cagr)) {
+              growthLeader = item;
+            }
+          });
+          return growthLeader.country + " leads in growth with a CAGR of " + growthLeader.cagr + "%.";
+        } else {
+          var marketLeader = data[0], growthLeader = data[0];
+          data.forEach(function(item) {
+            if (parseFloat(item.marketValue) > parseFloat(marketLeader.marketValue)) {
+              marketLeader = item;
+            }
+            if (parseFloat(item.cagr) > parseFloat(growthLeader.cagr)) {
+              growthLeader = item;
+            }
+          });
+          if (marketLeader === growthLeader) {
+            return marketLeader.country + " dominates with a market value of $" +
+                   parseFloat(marketLeader.marketValue).toFixed(2) + "B and a CAGR of " + marketLeader.cagr + "%.";
+          }
+          return marketLeader.country + " leads in Market Value ($" + parseFloat(marketLeader.marketValue).toFixed(2) +
+                 "B, " + marketLeader.cagr + "% CAGR), while " + growthLeader.country + " surpasses in growth (" +
+                 growthLeader.cagr + "%, $" + parseFloat(growthLeader.marketValue).toFixed(2) + "B).";
+        }
+      }
+
+      // Comparative conclusion for two regions.
+      function getComparativeConclusion(region1, data1, region2, data2, viewBy) {
+        function getRegionConclusion(regionName, data) {
+          if (!data || data.length === 0) return "No data available for " + regionName + ".";
+          if (data.length === 1) {
+            var onlyCountry = data[0];
+            if(viewBy === "market") {
+              return "For " + regionName + ", " + onlyCountry.country +
+                     " is the only available data point with a market value of $" +
+                     parseFloat(onlyCountry.marketValue).toFixed(2) + "B.";
+            } else if(viewBy === "cagr") {
+              return "For " + regionName + ", " + onlyCountry.country +
+                     " is the only available data point with a CAGR of " + onlyCountry.cagr + "%.";
+            } else {
+              return "For " + regionName + ", " + onlyCountry.country +
+                     " is the only available data point with a market value of $" +
+                     parseFloat(onlyCountry.marketValue).toFixed(2) + "B and a CAGR of " + onlyCountry.cagr + "%.";
+            }
+          }
+          if (viewBy === "market") {
+            var marketLeader = data[0];
+            data.forEach(function(item) {
+              if (parseFloat(item.marketValue) > parseFloat(marketLeader.marketValue)) {
+                marketLeader = item;
+              }
+            });
+            return "For " + regionName + ", " + marketLeader.country +
+                   " dominates with a market value of $" +
+                   parseFloat(marketLeader.marketValue).toFixed(2) + "B.";
+          } else if (viewBy === "cagr") {
+            var growthLeader = data[0];
+            data.forEach(function(item) {
+              if (parseFloat(item.cagr) > parseFloat(growthLeader.cagr)) {
+                growthLeader = item;
+              }
+            });
+            return "For " + regionName + ", " + growthLeader.country +
+                   " leads in growth with a CAGR of " + growthLeader.cagr + "%.";
+          } else {
+            var marketLeader = data[0], growthLeader = data[0];
+            data.forEach(function(item) {
+              if (parseFloat(item.marketValue) > parseFloat(marketLeader.marketValue)) {
+                marketLeader = item;
+              }
+              if (parseFloat(item.cagr) > parseFloat(growthLeader.cagr)) {
+                growthLeader = item;
+              }
+            });
+            if (marketLeader === growthLeader) {
+              return "For " + regionName + ", " + marketLeader.country +
+                     " is the only dominant player with a market value of $" +
+                     parseFloat(marketLeader.marketValue).toFixed(2) + "B and a CAGR of " + marketLeader.cagr + "%.";
+            }
+            return "For " + regionName + ", " + marketLeader.country + " ($" +
+                   parseFloat(marketLeader.marketValue).toFixed(2) + "B, " + marketLeader.cagr +
+                   "% CAGR) dominates the market value, while " + growthLeader.country +
+                   " leads in growth (" + growthLeader.cagr + "%, $" +
+                   parseFloat(growthLeader.marketValue).toFixed(2) + "B).";
+          }
+        }
+        var conclusion1 = getRegionConclusion(region1, data1);
+        var conclusion2 = getRegionConclusion(region2, data2);
+        return conclusion1 + " Similarly, " + conclusion2;
+      }
+      /***********************
+       * Chart Creation Function
+       ***********************/
+      
+      // Added parameter "viewBy" to adjust the series data and tooltips.
+      function createChart(containerId, data, title, viewBy) {
+        var root = am5.Root.new(containerId);
+        root.setThemes([ am5themes_Animated.new(root) ]);
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+          panX: true,
+          panY: true,
+          wheelX: "panX",
+          wheelY: "zoomX",
+          pinchZoomX: true,
+          paddingLeft: 20,
+          paddingRight: 20,
+          paddingTop: 60,
+          paddingBottom: 30
+        }));
+        var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+        cursor.lineY.set("visible", false);
+        var xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30, minorGridEnabled: true });
+        xRenderer.labels.template.setAll({
+          rotation: -90,
+          centerY: am5.p50,
+          centerX: am5.p100,
+          paddingRight: 15
+        });
+        xRenderer.grid.template.setAll({ location: 1 });
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+          maxDeviation: 0.3,
+          categoryField: "country",
+          renderer: xRenderer,
+          tooltip: am5.Tooltip.new(root, {})
+        }));
+        var yRenderer = am5xy.AxisRendererY.new(root, { strokeOpacity: 0.1 });
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+          maxDeviation: 0.3,
+          renderer: yRenderer
+        }));
+        
+        var tooltipHtml = "";
+        if(viewBy === "default") {
+          tooltipHtml = "<img src='{flag}' style='width:20px;height:15px;vertical-align:middle;margin-right:5px;'/>" +
+                        "<b>{country}</b><br>" +
+                        "Market Value: {marketValue} B<br>" +
+                        "CAGR: {cagr}%";
+        } else if (viewBy === "market") {
+          tooltipHtml = "<img src='{flag}' style='width:20px;height:15px;vertical-align:middle;margin-right:5px;'/>" +
+                        "<b>{country}</b><br>" +
+                        "Market Value: {marketValue} B";
+        } else if (viewBy === "cagr") {
+          tooltipHtml = "<img src='{flag}' style='width:20px;height:15px;vertical-align:middle;margin-right:5px;'/>" +
+                        "<b>{country}</b><br>" +
+                        "CAGR: {cagr}%";
+        }
+        var seriesTooltip = am5.Tooltip.new(root, {});
+        seriesTooltip.label.set("html", tooltipHtml);
+
+        var valueField = (viewBy === "cagr") ? "cagr" : "marketValue";
+        var seriesName = (viewBy === "cagr") ? "CAGR" : "Market Value";
+        
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+          name: seriesName,
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: valueField,
+          sequencedInterpolation: true,
+          categoryXField: "country",
+          tooltip: seriesTooltip
+        }));
+        series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+        series.columns.template.adapters.add("fill", function(fill, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        series.columns.template.adapters.add("stroke", function(stroke, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        // In default mode, add bullet label showing the CAGR.
+        if(viewBy === "default") {
+          series.bullets.push(function() {
+            return am5.Bullet.new(root, {
+              locationY: 0,
+              sprite: am5.Label.new(root, {
+                text: "{cagr}%",
+                centerX: am5.p50,
+                populateText: true,
+                fill: am5.color(0x000000),
+                dy: -10
+              })
+            });
+          });
+        }
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
+        series.appear(1000);
+        chart.appear(1000, 100);
+        if (title) {
+          chart.children.unshift(am5.Label.new(root, {
+            text: title,
+            fontSize: 20,
+            fontWeight: "bold",
+            textAlign: "center",
+            x: am5.p50,
+            centerX: am5.p50,
+            marginBottom: 15,
+            y: 0
+          }));
+        }
+        return root;
+      }
+
+      /***********************
+       * Chart Update Logic
+       ***********************/
+      
+      var chartRootSingle = null;
+      var chartRootCompare1 = null;
+      var chartRootCompare2 = null;
+
+      function updateChart() {
+        var product = document.getElementById("market").value;
+        var region = document.getElementById("region").value;
+        var compareRegion = document.getElementById("region-compare").value;
+        var viewBy = document.getElementById("viewBy").value;
+        
+        if (chartRootSingle) { chartRootSingle.dispose(); chartRootSingle = null; }
+        if (chartRootCompare1) { chartRootCompare1.dispose(); chartRootCompare1 = null; }
+        if (chartRootCompare2) { chartRootCompare2.dispose(); chartRootCompare2 = null; }
+        
+        document.getElementById("chartdiv").style.display = "none";
+        document.getElementById("conclusiondiv").style.display = "none";
+        document.getElementById("chartdiv1").style.display = "none";
+        document.getElementById("chartdiv2").style.display = "none";
+        document.getElementById("conclusionCombined").style.display = "none";
+        
+        if (compareRegion && compareRegion !== "") {
+          document.getElementById("loading").style.display = "block";
+          setTimeout(function() {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("chartdiv1").style.display = "inline-block";
+            document.getElementById("chartdiv2").style.display = "inline-block";
+            document.getElementById("conclusionCombined").style.display = "block";
+            var data1 = getDataForRegion(region, product);
+            chartRootCompare1 = createChart("chartdiv1", data1, region + " (" + product + ")", viewBy);
+            var data2 = getDataForRegion(compareRegion, product);
+            chartRootCompare2 = createChart("chartdiv2", data2, compareRegion + " (" + product + ")", viewBy);
+            var combinedConclusion = getComparativeConclusion(region, data1, compareRegion, data2, viewBy);
+            typeWriter(document.getElementById("conclusionCombined"), combinedConclusion, 9);
+          }, 1000);
+        } else {
+          document.getElementById("chartdiv").style.display = "block";
+          document.getElementById("conclusiondiv").style.display = "block";
+          var data = getDataForRegion(region, product);
+          chartRootSingle = createChart("chartdiv", data, region + " (" + product + ")", viewBy);
+          var conclusionText = getConclusion(data, viewBy);
+          typeWriter(document.getElementById("conclusiondiv"), conclusionText, 9);
+        }
+      }
+
+      /***********************
+       * Event Listeners for Charts
+       ***********************/
+      
+      document.getElementById("market").addEventListener("change", function() {
+        updateChart();
+        updateContent();
+      });
+      document.getElementById("region").addEventListener("change", function() {
+        document.getElementById("region-compare").value = "";
+        updateChart();
+        updateContent();
+        updateComparisonDropdown();
+      });
+      document.getElementById("region-compare").addEventListener("change", function() {
+        updateChart();
+      });
+      document.getElementById("viewBy").addEventListener("change", function() {
+        updateChart();
+      });
+
+      updateChart();
+
+    }); // end am5.ready
+  </script>
+
+  <!-- JavaScript for Dynamic Content Updates -->
+  <script>
+    // Generic product-level fallback data 
+    var productData = {
+      "Spine Implant": {
+        title: "Spine Implant - Worldwide",
+        highlights: [
+          "The global spine implant market is witnessing robust growth driven by increasing demand for advanced spinal solutions.",
+          "Technological advancements and innovation in implant design are key drivers of market expansion across regions.",
+          "An aging global population and rising incidence of spinal disorders are fueling higher adoption rates.",
+          "Enhanced healthcare infrastructure and increased R&D investments are propelling market growth worldwide.",
+          "Opportunities abound in both developed and emerging markets, making the global landscape highly attractive."
+        ],
+        graphData: "Graph data for Spine Implant (Worldwide)."
+      },
+      "IVD": {
+        title: "IVD Devices - Worldwide",
+        highlights: [
+          "The global IVD market is estimated at roughly $89B, driven by advancements in diagnostic technologies and the increasing emphasis on early disease detection.",
+          "Robust healthcare investments and R&D initiatives are fueling steady market expansion across diverse regions.",
+          "Innovative imaging techniques and minimally invasive procedures are enhancing patient outcomes and market penetration.",
+          "A mix of mature and emerging markets creates a dynamic landscape with varied growth opportunities.",
+          "Continued technological advancements and favorable regulatory conditions are set to further propel global market growth."
+        ],
+        graphData: "Graph data for IVD Devices (Worldwide)."
+      }
+    };
+
+    // Combined data for specific region selections.
+    var combinedData = {
+      "Spine Implant": {
+        "Worldwide": {
+          highlights: productData["Spine Implant"].highlights,
+          graphData: productData["Spine Implant"].graphData
+        },
+        "North America": {
+          highlights: [
+            "Largest market with a current value of $6.71B and a steady CAGR of 4.20%, indicating robust growth.",
+            "Projected growth to approximately $10.1B by 2030 and $15.3B by 2040 if current trends continue.",
+            "Advanced healthcare infrastructure, high R&D investments, and favorable reimbursement policies drive expansion.",
+            "High adoption of advanced implant technologies and minimally invasive procedures bolsters market innovation.",
+            "An aging population and rising prevalence of spinal disorders further fuel demand."
+          ],
+          graphData: "Graph data for Spine Implant in North America."
+        },
+        "South America": {
+          highlights: [
+            "Emerging market valued at $1.28B with a CAGR of 4.57%, showing promising growth.",
+            "Expected to reach approximately $2.0B by 2030 and around $3.1B by 2040.",
+            "Improvements in healthcare access and infrastructure are creating new opportunities.",
+            "Increasing awareness of spinal health and better diagnostic capabilities support market expansion.",
+            "Regulatory reforms and growing investments in medical technology attract key industry players."
+          ],
+          graphData: "Graph data for Spine Implant in South America."
+        },
+        "Europe": {
+          highlights: [
+            "Robust market currently valued at $3.52B with an accelerated CAGR of 5.73%, ensuring strong growth.",
+            "Projections indicate growth to nearly $6.2B by 2030 and around $10.7B by 2040.",
+            "Continuous technological advancements and innovation in implant materials drive market dynamics.",
+            "High healthcare spending and substantial R&D funding support sustained expansion.",
+            "A favorable regulatory environment and stringent quality controls further encourage market growth."
+          ],
+          graphData: "Graph data for Spine Implant in Europe."
+        },
+        "Australia & Oceania": {
+          highlights: [
+            "Niche market valued at $0.39B with a moderate CAGR of 3.69%, showing steady growth.",
+            "Projected market size to reach about $0.56B by 2030 and roughly $0.81B by 2040.",
+            "High-quality healthcare systems and rigorous regulatory standards ensure market reliability.",
+            "Growing awareness of spinal disorders coupled with improved diagnostic capabilities supports expansion.",
+            "Targeted investments in healthcare technology and innovation continue to promote growth."
+          ],
+          graphData: "Graph data for Spine Implant in Australia & Oceania."
+        },
+        "Asia": {
+          highlights: [
+            "High growth potential market valued at $2.67B with a robust CAGR of 7.20%, indicating rapid expansion.",
+            "Expected to nearly double to around $5.3B by 2030 and reach approximately $10.8B by 2040.",
+            "Rapid urbanization, rising disposable incomes, and improved healthcare access drive demand.",
+            "Increasing adoption of cutting-edge medical technologies and implant innovations bolsters market growth.",
+            "Attractive opportunities exist for both new entrants and established businesses in the region."
+          ],
+          graphData: "Graph data for Spine Implant in Asia."
+        },
+        "Africa": {
+          highlights: [
+            "Emerging market currently valued at $0.30B with a conservative CAGR of 2.82%, reflecting steady growth.",
+            "Estimated to grow to about $0.40B by 2030 and near $0.52B by 2040.",
+            "Incremental investments in healthcare infrastructure and modern medical facilities are key growth drivers.",
+            "Significant untapped potential exists due to low market penetration amidst improving economic conditions.",
+            "Opportunities for market entrants offering cost-effective and innovative spine implant solutions are on the rise."
+          ],
+          graphData: "Graph data for Spine Implant in Africa."
+        }
+      },
+      "IVD": {
+        "Worldwide": {
+          highlights: productData["IVD"].highlights,
+          graphData: productData["IVD"].graphData
+        },
+        "North America": {
+          highlights: [
+            "The largest IVD market with a current value of $33.53B and a CAGR of 2.80%.",
+            "Projected growth to approximately $44.2B by 2030 and around $58.3B by 2040 based on current trends.",
+            "High healthcare spending and advanced diagnostic technologies drive market stability and growth.",
+            "Robust R&D investments and a well-established healthcare infrastructure foster continuous innovation.",
+            "Favorable regulatory frameworks further enhance market adoption of cutting-edge IVD solutions."
+          ],
+          graphData: "Graph data for IVD in North America."
+        },
+        "South America": {
+          highlights: [
+            "An emerging IVD market valued at $4.64B, growing at a CAGR of 3.67%.",
+            "Expected to reach around $6.65B by 2030 and approximately $9.57B by 2040.",
+            "Ongoing investments in healthcare infrastructure and diagnostic technologies are fueling market expansion.",
+            "Increasing awareness about early diagnosis and disease prevention is a key market driver.",
+            "New market entrants and innovative diagnostic solutions are creating additional growth opportunities."
+          ],
+          graphData: "Graph data for IVD in South America."
+        },
+        "Australia & Oceania": {
+          highlights: [
+            "A niche IVD market valued at $1.36B with a robust CAGR of 3.82%.",
+            "Forecasted to grow to about $1.98B by 2030 and roughly $2.88B by 2040.",
+            "High-quality healthcare systems and stringent regulatory standards enhance market reliability.",
+            "Technological innovations in diagnostic tools are key drivers of market progress.",
+            "Consistent investments in healthcare advancements support steady and sustainable growth."
+          ],
+          graphData: "Graph data for IVD in Australia & Oceania."
+        },
+        "Asia": {
+          highlights: [
+            "A high-growth IVD market valued at $25.5B with a CAGR of 4.05%, indicating strong expansion.",
+            "Projected market size to reach around $37.9B by 2030 and approximately $56.4B by 2040.",
+            "Rapid urbanization, rising disposable incomes, and increased healthcare investments drive demand.",
+            "Technological advancements and a focus on early diagnostic solutions bolster market dynamics.",
+            "Both local and international players are capitalizing on emerging opportunities in the region."
+          ],
+          graphData: "Graph data for IVD in Asia."
+        },
+        "Africa": {
+          highlights: [
+            "An emerging IVD market valued at $1.72B, growing at a CAGR of 3.71%.",
+            "Expected to grow to about $2.48B by 2030 and roughly $3.56B by 2040.",
+            "Incremental improvements in healthcare infrastructure and access are key market drivers.",
+            "Growing awareness and demand for early disease detection are gradually expanding market potential.",
+            "Opportunities for cost-effective and innovative IVD solutions are on the rise as the market matures."
+          ],
+          graphData: "Graph data for IVD in Africa."
+        },
+        "Europe": {
+          highlights: [
+            "A robust IVD market valued at $22.4B with a CAGR of 2.96%, ensuring steady growth.",
+            "Forecasted to reach around $30.0B by 2030 and approximately $40.2B by 2040.",
+            "Strong healthcare infrastructure, high R&D investments, and favorable regulatory environments drive market expansion.",
+            "Continuous technological advancements and focus on minimally invasive diagnostic methods contribute to growth.",
+            "Mature market dynamics and stable economic conditions foster consistent demand for advanced IVD solutions."
+          ],
+          graphData: "Graph data for IVD in Europe."
+        }
+      }
+    };
+
+    // Helper function to format highlights.
+    // It bolds any occurrence of "$XXB" and "XX%" in the text.
+    function formatHighlight(text) {
+      // Bold values like "$6.71B" (allowing optional spaces and decimals)
+      text = text.replace(/(\$\s*\d+(\.\d+)?B)/gi, '<strong>$1</strong>');
+      // Bold percentage values like "4.20%"
+      text = text.replace(/(\d+(\.\d+)?%)/g, '<strong>$1</strong>');
+      return text;
+    }
+
+    // Update page content based on the current selections
+    function updateContent() {
+      var product = document.getElementById("market").value || "Spine Implant";
+      var region  = document.getElementById("region").value || "Worldwide";
+
+      // Update page title, main title, and badge.
+      var headingText = product + " - " + region;
+      document.getElementById("page-title").textContent = headingText;
+      document.getElementById("main-title").textContent = headingText;
+      document.getElementById("regionBadge").textContent = region;
+
+      // Use region-specific data if available; otherwise fallback to generic product data.
+      var data =
+        (combinedData[product] && combinedData[product][region]) ||
+        productData[product];
+
+      // Update the Highlights list.
+      var highlightsContainer = document.getElementById("highlightsList");
+      highlightsContainer.innerHTML = "";
+      if (data.highlights && data.highlights.length) {
+        data.highlights.forEach(function(point) {
+          var li = document.createElement("li");
+          li.innerHTML = formatHighlight(point);
+          highlightsContainer.appendChild(li);
+        });
+      } else {
+        var li = document.createElement("li");
+        li.innerHTML = "No highlights available.";
+        highlightsContainer.appendChild(li);
+      }
+
+      // Optional: Update the Graph Content section if needed.
+      if(document.getElementById("graphContent")) {
+        document.getElementById("graphContent").innerText = data.graphData || "";
+      }
+    }
+
+    // Initial content update on page load.
+    document.addEventListener("DOMContentLoaded", function() {
+      updateContent();
+    });
+  </script>
+</body>
+</html>
